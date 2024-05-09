@@ -9,11 +9,19 @@ import {
 
 
 import Root from './root/Root';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    children:[
+      {
+        path:"/",
+        element:<Home></Home>
+      }
+
+    ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
