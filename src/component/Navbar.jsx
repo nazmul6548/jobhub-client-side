@@ -34,29 +34,29 @@ const Navbar = () => {
    
     const navlink = (
         <>
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/">Home</NavLink>
           </li>
           
             {
-              user && <li className="">
+              user && <li className="m-1">
               <NavLink to="/">All Jobs</NavLink>
             </li>
             }
           
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/">Applied Jobs</NavLink>
           </li>
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/"> Add A Job</NavLink>
           </li>
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/">My Jobs</NavLink>
           </li>
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/"> Blogs</NavLink>
           </li>
-          <li className="hover:border-2">
+          <li className="hover:border-2 m-1">
             <NavLink to="/"> User Profile</NavLink>
           </li>
           
@@ -108,7 +108,7 @@ const Navbar = () => {
             </ul>
           </div>
           
-          <Link to="/" className="btn btn-ghost hidden text-4xl  md:block "><span className="text-secondary text-4xl">JobQuest</span>Hub</Link>
+          <Link to="/" className="btn btn-ghost hidden text-4xl  md:block "><span className=" text-4xl">JobQuest</span>Hub</Link>
         </div>
         <div className="navbar-center  hidden lg:flex">
           <ul className="menu menu-horizontal  px-1 text-zinc-50">
