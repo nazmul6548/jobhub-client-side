@@ -2,30 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+ 
+import router from './Route';
+import { RouterProvider } from 'react-router-dom';
 
 
-import Root from './root/Root';
-import Home from './pages/Home';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root></Root>,
-    children:[
-      {
-        path:"/",
-        element:<Home></Home>
-      }
 
-    ]
-  },
-]);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <div className='max-w-7xl mx-auto'>
+    <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
+  </div>
 )
