@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { Audio } from 'react-loader-spinner'
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { AuthContext } from "./authprovider/AuthProvider";
@@ -9,7 +9,27 @@ import { AuthContext } from "./authprovider/AuthProvider";
 const Navbar = () => {
     const {user,loader,logout,}= useContext(AuthContext)
 
+    const [theme,setTheme] = useState("light")
 
+    useEffect(()=>{
+        localStorage.setItem("theme",theme);
+        const item = localStorage.getItem("theme");
+        
+            document.querySelector("html").setAttribute("data-theme",item);
+        
+            },[theme])  
+
+
+    const handleTheme = e => {
+        console.log("ki");
+        if (e.target.checked) {
+            setTheme("dark")
+        }else{
+            setTheme("light")
+        }
+      
+    }
+   
 
    
     const navlink = (
@@ -41,23 +61,7 @@ const Navbar = () => {
           </li>
           
             
-            
-             {/* {
-              user &&  <li className="">
-              <NavLink to="/">My Art & Craft List</NavLink>
-            </li>
-             } */}
-            {/* {
-              <NavLink to="/newdata">newcard</NavLink>
-            } */}
-
-            {/* <li>
-              <NavLink to="/logIn">LogIn</NavLink>
-            </li> */}
-
-            {/* <li>
-              <NavLink to="/register">Registration</NavLink>
-            </li> */}
+           
           
     
          
@@ -114,7 +118,11 @@ const Navbar = () => {
         <div className=" navbar-end">
 
             {/*  */}
-        
+          {/*  */}
+          <label onChangeCapture={handleTheme} className="flex text-white cursor-pointer gap-2">
+          <input type="checkbox" value="synthwave" className="toggle theme-controller"/>
+</label>
+            {/*  */}
             {/*  */}
             {user ? (
           <div className="dropdown dropdown-hover">
