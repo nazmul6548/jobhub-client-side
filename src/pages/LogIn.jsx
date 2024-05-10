@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import swal from "sweetalert";
 
 
 const LogIn = () => {
-    const {login} = useContext(AuthContext)
-
+    const {login,googlelogin} = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate()
     const location = useLocation()
     const div =location?.state || '/';
@@ -37,9 +37,23 @@ const LogIn = () => {
               
             });
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            setErrorMessage(error.message);
+            console.log(error.message)
+
+        });
 
     }
+    const googleButton = ()=>{
+      googlelogin()
+      .then(() => {
+        swal({
+            title: "LogIn successful",
+            icon: "success",
+        });
+    })
+    .catch(error => console.log(error));
+    } 
     return (
         <div className="font-sans text-[#333] min-h-screen">
             <div className="grid lg:grid-cols-2 gap-4 bg-gradient-to-r from-[#0b0e37] to-blue-700 sm:p-8 p-4 h-[320px]">
@@ -57,7 +71,7 @@ const LogIn = () => {
                             <h3 className="text-3xl text-[#0b0e37] font-extrabold">Log in</h3>
                         </div>
                         <div className="sm:flex sm:items-start space-x-4 max-sm:space-y-4 mb-10">
-                            <button type="button" className="py-2.5 px-4 text-sm font-semibold rounded text-blue-500 bg-blue-100 hover:bg-blue-200 focus:outline-none">
+                            <button onClick={() => googleButton()} type="button" className="py-2.5 px-4 text-sm font-semibold rounded text-blue-500 bg-blue-100 hover:bg-blue-200 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20px" className="inline mr-4" viewBox="0 0 512 512">
                   <path fill="#fbbd00"
                     d="M120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308H52.823C18.568 144.703 0 198.922 0 256s18.568 111.297 52.823 155.785h86.308v-86.308C126.989 305.13 120 281.367 120 256z"
@@ -108,6 +122,7 @@ const LogIn = () => {
                         <div className="mt-10">
                             <input type="submit" value="Log In" className="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded text-white bg-[#0b0e37] hover:bg-blue-700 focus:outline-none" />
                         </div>
+                        {errorMessage && <p className="text-red-500 mb-4">{"you provide right email and password"}</p>} 
                         <p className="text-sm mt-6 text-center">Don't have an account <Link to="/register" className="text-[#0b0e37] font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>
                     </form>
                 </div>

@@ -1,49 +1,156 @@
-import { useState } from "react";
+// import { useState } from "react";
+import { Audio } from 'react-loader-spinner'
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
+import { AuthContext } from "./authprovider/AuthProvider";
 
 
 const Navbar = () => {
+    const {user,loader,logout,}= useContext(AuthContext)
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-      setIsMenuOpen(!isMenuOpen);
-    };
-    return (
-        <header className='flex shadow-lg py-4 px-4 sm:px-10 bg-white font-sans min-h-70px tracking-wide relative z-50'>
-      <div className='flex flex-wrap items-center justify-between gap-4 w-full'>
-        <a href="/" className="lg:absolute max-lg:left-10 lg:top-2/4 lg:left-2/4 lg:-translate-x-1/2 lg:-translate-y-1/2">
-          <img src="https://readymadeui.com/readymadeui.svg" alt="logo" className='w-36' />
-        </a>
 
-        <div className={`max-lg:hidden ${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-0 w-full bg-black opacity-50 z-50`}>
-          {/* Overlay for the collapsed menu */}
-        </div>
+   
+    const navlink = (
+        <>
+          <li className="hover:border-2">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          
+            {
+              user && <li className="">
+              <NavLink to="/">All Jobs</NavLink>
+            </li>
+            }
+          
+          <li className="hover:border-2">
+            <NavLink to="/">Applied Jobs</NavLink>
+          </li>
+          <li className="hover:border-2">
+            <NavLink to="/"> Add A Job</NavLink>
+          </li>
+          <li className="hover:border-2">
+            <NavLink to="/">My Jobs</NavLink>
+          </li>
+          <li className="hover:border-2">
+            <NavLink to="/"> Blogs</NavLink>
+          </li>
+          <li className="hover:border-2">
+            <NavLink to="/"> User Profile</NavLink>
+          </li>
+          
+            
+            
+             {/* {
+              user &&  <li className="">
+              <NavLink to="/">My Art & Craft List</NavLink>
+            </li>
+             } */}
+            {/* {
+              <NavLink to="/newdata">newcard</NavLink>
+            } */}
 
-        <div id="collapseMenu" className={`max-lg:hidden ${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-0 w-full z-50`}>
-          {/* Collapsed menu */}
-          <button id="toggleClose" className='lg:hidden fixed top-2 right-4 z-50 rounded-full bg-white p-3' onClick={toggleMenu}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 fill-black" viewBox="0 0 320.591 320.591">
-              {/* SVG path for close icon */}
+            {/* <li>
+              <NavLink to="/logIn">LogIn</NavLink>
+            </li> */}
+
+            {/* <li>
+              <NavLink to="/register">Registration</NavLink>
+            </li> */}
+          
+    
+         
+        </>
+    )
+    return loader ? (
+      <div className="flex items-center justify-center w-full h-[100vh] text-gray-100  ">
+      <div>
+      render(<Audio
+  height="100"
+  width="100"
+  color="#4fa94d"
+  ariaLabel="audio-loading"
+  wrapperStyle={{}}
+  wrapperClass="wrapper-class"
+  visible={true}
+  />)
+      </div>
+    </div>
+     ) : (
+        <div className="navbar bg-[#0b0e37] fixed top-0 shadow-lg  z-[4] ">
+        <div className=" navbar-start  text-white ">
+          <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
             </svg>
-          </button>
-          <ul className='lg:flex lg:gap-x-5 space-y-3 w-1/2 min-w-[300px] p-6 h-full shadow-md overflow-auto'>
-            {/* Navigation links */}
+          </div>
+          
+            <ul tabIndex={0}  className="menu bg-[#0b0e37] text-white  py-4 menu-sm dropdown-content mt-3 z-[2]  p-2 shadow   rounded-box w-52">
+              
+              {navlink}
+            </ul>
+          </div>
+          
+          <Link to="/" className="btn btn-ghost hidden text-4xl  md:block "><span className="text-secondary text-4xl">JobQuest</span>Hub</Link>
+        </div>
+        <div className="navbar-center  hidden lg:flex">
+          <ul className="menu menu-horizontal  px-1 text-zinc-50">
+            {navlink}
           </ul>
         </div>
+        <div className=" navbar-end">
 
-        <div className='flex items-center ml-auto space-x-6'>
-          <button className='font-semibold text-15px border-none outline-none'>
-            <a href='/' className='text-[#007bff] hover:underline'>Login</a>
-          </button>
-          <button className='px-4 py-2 text-sm rounded-sm font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]'>Sign up</button>
-          <button id="toggleOpen" className='lg:hidden' onClick={toggleMenu}>
-            <svg className="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              {/* SVG path for menu icon */}
-            </svg>
-          </button>
+            {/*  */}
+        
+            {/*  */}
+            {user ? (
+          <div className="dropdown dropdown-hover">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                
+                <a id="clickable"><img src={user?.photoURL || <p>user</p>} alt="" /></a>
+                <Tooltip anchorSelect="#clickable" clickable>
+                <button> {user?.displayName || "not found"}</button>
+                <div className="mt-2 rounded-md">
+                <button onClick={logout} className="btn btn-sm bg-white">LogOut</button>
+                </div>
+
+                </Tooltip>
+              </div>
+            </label>
+            {/*  */}
+          
+          </div>
+        ) : (
+          <Link to="/logIn">
+            <button className="btn btn-sm bg-white text-stone-800 ml-2 mr-2">Login</button>
+          </Link>
+          
+
+        )}
+        {/* {
+          !user && <Link to="/register">
+          <button className="btn btn-sm bg-white text-stone-800">Register</button>
+        </Link>
+        } */}
+        {/* {
+          user && <button onClick={logout} className="btn btn-sm bg-white">LogOut</button>
+        } */}
         </div>
       </div>
-    </header>
     );
   }
 

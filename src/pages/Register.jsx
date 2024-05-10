@@ -18,16 +18,16 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        const image = form.image.value;
+        const photo = form.photo.value;
         const password = form.password.value;
-        const result = {name,email,image,password}
-        console.log(result);
-        createUser(email,password)
+        const res = {name,email,password,photo}
+        console.log(res);
+        createUser(email,password,name)
         .then(result => {
             navigate(div)
             // console.log(result.user);
-const user =result.user;
-console.log(user);
+const res =result;
+console.log(res);
 
 swal({
     title: "Good job!",
@@ -68,7 +68,7 @@ swal({
                 <div className="mt-10">
                     <label className="text-xs block mb-2">Photo URL</label>
                     <div className="relative flex items-center">
-                        <input name="image" type="text" required className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none" placeholder="Photo url" />
+                        <input name="photo" type="photo" required className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-blue-500 px-2 py-3 outline-none" placeholder="Photo url" />
                      
                     </div>
                 </div>

@@ -21,7 +21,7 @@ const Slider = () => {
           autoplay={{ delay: 2000 }}
         >
           <SwiperSlide>
-            <div className="slide slide1 flex flex-col">
+            <div className="slide slide1 flex flex-col fixed">
               <div>
                 <h1 className="text-3xl md:text-6xl font-bold w-3/4 m-auto text-center text-white animate__animated animate__fadeInDownBig whitespace-nowrap">
                 On-Site Job
