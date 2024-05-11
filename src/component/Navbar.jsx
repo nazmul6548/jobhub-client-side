@@ -21,7 +21,7 @@ const Navbar = () => {
 
 
     const handleTheme = e => {
-        console.log("ki");
+       
         if (e.target.checked) {
             setTheme("dark")
         }else{
@@ -34,30 +34,31 @@ const Navbar = () => {
    
     const navlink = (
         <>
-          <li className="hover:border-2 m-1">
+          <li className="hover:border-2 rounded-md m-1">
             <NavLink to="/">Home</NavLink>
           </li>
           
-            {
-              user && <li className="m-1">
-              <NavLink to="/">All Jobs</NavLink>
+            
+              <li className="hover:border-2 rounded-md m-1">
+              <NavLink to="/f">All Jobs</NavLink>
             </li>
-            }
+            
+          
+          <li className="hover:border-2 rounded-md m-1">
+            <NavLink to="/f">Applied Jobs</NavLink>
+          </li>
+          <li className="hover:border-2 rounded-md m-1">
+            <NavLink to="/addjob" > Add A Job</NavLink>
+          </li>
           
           <li className="hover:border-2 m-1">
-            <NavLink to="/">Applied Jobs</NavLink>
+            <NavLink to="/g">My Jobs</NavLink>
           </li>
           <li className="hover:border-2 m-1">
-            <NavLink to="/"> Add A Job</NavLink>
+            <NavLink to="/g"> Blogs</NavLink>
           </li>
           <li className="hover:border-2 m-1">
-            <NavLink to="/">My Jobs</NavLink>
-          </li>
-          <li className="hover:border-2 m-1">
-            <NavLink to="/"> Blogs</NavLink>
-          </li>
-          <li className="hover:border-2 m-1">
-            <NavLink to="/"> User Profile</NavLink>
+            <NavLink to="/g"> User Profile</NavLink>
           </li>
           
             

@@ -2,10 +2,18 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import TabJobCard from './TabJobCard';
-import { useLoaderData } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 const TabCategory = () => {
-  const jobs =useLoaderData();
-  console.log(jobs);
+  const [jobs,setJobs] =useState([])
+  useEffect(()=>{
+    const getdata = async () => {
+      const {data} = await axios (`${import.meta.env.VITE_API_URL}/jobs`)
+      setJobs(data)
+    }
+    getdata()
+  })
     return (
         <Tabs>
       <div className=' bg-gradient-to-r from-[#0b0e37] to-blue-700 text-white p-10'>
