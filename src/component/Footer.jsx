@@ -72,7 +72,7 @@ const Footer = () => {
           <p className='text-gray-300 text-sm'>© 2023 <a href='https://readymadeui.com/' target='_blank' rel='noopener noreferrer' className="hover:underline mx-1">JobQuestHub</a> All Rights Reserved.</p>
         </div>
   
-        <img src="https://readymadeui.com/bg-image.webp" alt="Background" className="absolute w-full inset-0 object-cover opacity-5 -z-0" />
+        <img src="https://readymadeui.com/bg-image.webp" alt="Background" className="absolute w-full inset-0 object-cover opacity-5 " />
       </footer>
     );
 };

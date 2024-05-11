@@ -6,7 +6,7 @@ import swal from "sweetalert";
 
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser,userUpdateProfile,setReload} = useContext(AuthContext)
 
 
     const navigate = useNavigate()
@@ -22,11 +22,20 @@ const Register = () => {
         const password = form.password.value;
         const res = {name,email,password,photo}
         console.log(res);
-        createUser(email,password,name)
-        .then(result => {
-            navigate(div)
+        createUser(email,password)
+        .then(() => {
+            userUpdateProfile(name,photo)
+            // navigate(div)
+            .then(()=>{
+                navigate(div)
+                
+                setReload(true)
+               
+              }
+              
+              )
             // console.log(result.user);
-const res =result;
+
 console.log(res);
 
 swal({
@@ -34,14 +43,15 @@ swal({
     text: "You Successfully Register !",
     icon: "success",
     button: "Done!",
-  })
+})
+
         })
         .then(error => {
             console.log(error);
         })
     }
     return (
-        <div className="font-sans text-gray-900 relative">
+        <div className="font-sans text-gray-900 relative mt-16">
         <div className="h-240 font-sans">
             <img src="https://i.ibb.co/tQYJ252/pexels-a-darmel-7862517.jpg" alt="Banner Image" className="w-full h-[300px] object-cover" />
         </div>

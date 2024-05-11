@@ -55,7 +55,7 @@ const LogIn = () => {
     .catch(error => console.log(error));
     } 
     return (
-        <div className="font-sans text-[#333] min-h-screen">
+        <div className="font-sans text-[#333] min-h-screen mt-16">
             <div className="grid lg:grid-cols-2 gap-4 bg-gradient-to-r from-[#0b0e37] to-blue-700 sm:p-8 p-4 h-[320px]">
                 <div>
                     <a href="#"><img src="" alt="logo" className="w-40" /></a>
