@@ -55,7 +55,7 @@ const Navbar = () => {
             <NavLink to="/mypostjob">My Jobs</NavLink>
           </li>
           <li className="hover:border-2 m-1">
-            <NavLink to="/g"> Blogs</NavLink>
+            <NavLink to="/blog"> Blogs</NavLink>
           </li>
           <li className="hover:border-2 m-1">
             <NavLink to="/g"> User Profile</NavLink>
