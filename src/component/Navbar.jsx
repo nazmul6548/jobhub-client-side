@@ -44,16 +44,22 @@ const Navbar = () => {
             </li>
             
           
-          <li className="hover:border-2 rounded-md m-1">
-            <NavLink to="/f">Applied Jobs</NavLink>
-          </li>
-          <li className="hover:border-2 rounded-md m-1">
-            <NavLink to="/addjob" > Add A Job</NavLink>
-          </li>
+         {
+          user &&  <li className="hover:border-2 rounded-md m-1">
+          <NavLink to="/f">Applied Jobs</NavLink>
+        </li>
+         }
+         {
+          user &&  <li className="hover:border-2 rounded-md m-1">
+          <NavLink to="/addjob" > Add A Job</NavLink>
+        </li>
+         }
           
-          <li className="hover:border-2 m-1">
+          {
+            user && <li className="hover:border-2 m-1">
             <NavLink to="/mypostjob">My Jobs</NavLink>
           </li>
+          }
           <li className="hover:border-2 m-1">
             <NavLink to="/blog"> Blogs</NavLink>
           </li>
@@ -83,7 +89,7 @@ const Navbar = () => {
       </div>
     </div>
      ) : (
-        <div className="navbar bg-[#0b0e37] fixed top-0 shadow-lg  z-[4] ">
+        <div className="navbar  bg-gradient-to-r from-[#0b0e37] to-blue-700 fixed top-0 shadow-lg  z-[4] ">
         <div className=" navbar-start  text-white ">
           <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
