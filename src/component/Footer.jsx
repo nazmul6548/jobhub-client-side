@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0b0e37] mt-16 font-sans tracking-wide relative overflow-hidden">
+       <div className="mt-20">
+         <footer className="bg-[#0b0e37]  font-sans tracking-wide relative overflow-hidden">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12 gap-8 py-14 px-12 relative">
           <div>
             <h2 className="text-lg text-gray-300 font-semibold mb-6">Company</h2>
@@ -74,6 +75,7 @@ const Footer = () => {
   
         <img src="https://readymadeui.com/bg-image.webp" alt="Background" className="absolute w-full inset-0 object-cover opacity-5 " />
       </footer>
+       </div>
     );
 };
 

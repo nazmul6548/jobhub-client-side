@@ -103,7 +103,7 @@ const AddJob = () => {
         className="px-4 py-3 bg-[#f0f1f2] text-black w-full text-sm border outline-[#007bff] rounded" />
      
     </div>
-    <div className="relative flex flex-col items-start w-full">
+    <div className=" flex flex-col  w-full">
         <h6 className="font-lato font-bold py-2">Job Posting Date:</h6>
       
 <DatePicker className="px-3 py-3 bg-[#f0f1f2] text-black  text-sm border outline-[#007bff] rounded w-full" name="post_date"  selected={startDate} onChange={(date) => setStartDate(date)} />
@@ -111,7 +111,7 @@ const AddJob = () => {
         
       
     </div>
-    <div className="relative flex flex-col items-start">
+    <div className=" flex flex-col ">
     <h6 className="font-lato py-2 font-bold">Application Deadline:</h6>
     
      <DatePicker className="px-4 py-3 bg-[#f0f1f2] text-black w-full text-sm border outline-[#007bff] rounded" name="application_deadline" selected={startDates} onChange={(date) => setStartDates(date)} />

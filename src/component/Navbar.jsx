@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { AuthContext } from "./authprovider/AuthProvider";
-
+import logo from "../assets/11.svg"
 
 const Navbar = () => {
     const {user,loader,logout,}= useContext(AuthContext)
@@ -89,7 +89,7 @@ const Navbar = () => {
       </div>
     </div>
      ) : (
-        <div className="navbar  bg-gradient-to-r from-[#0b0e37] to-blue-700 fixed top-0 shadow-lg  z-[4] ">
+        <div className="navbar  bg-gradient-to-r from-[#0b0e37] to-[#264e85] top-0 shadow-lg  z-[4] ">
         <div className=" navbar-start  text-white ">
           <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -115,7 +115,10 @@ const Navbar = () => {
             </ul>
           </div>
           
-          <Link to="/" className="btn btn-ghost hidden text-4xl  md:block "><span className=" text-4xl">JobQuest</span>Hub</Link>
+          <div className='flex justify-center items-center'>
+            <img src="https://svgshare.com/i/15zq.svg" alt="" className='w-[15%]' />
+          <Link to="/" className="btn btn-ghost text-[2px] font-lato font-bold  md:text-[30px]   ">JobHub</Link>
+          </div>
         </div>
         <div className="navbar-center  hidden lg:flex">
           <ul className="menu menu-horizontal  px-1 text-zinc-50">

@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import swal from "sweetalert";
-
+import { motion, useScroll } from "framer-motion"
 
 const LogIn = () => {
+    const { scrollYProgress } = useScroll();
     const {login,googlelogin} = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate()
@@ -55,10 +56,11 @@ const LogIn = () => {
     .catch(error => console.log(error));
     } 
     return (
+        
         <div className="font-sans text-[#333] min-h-screen mt-16">
             <div className="grid lg:grid-cols-2 gap-4 bg-gradient-to-r from-[#0b0e37] to-blue-700 sm:p-8 p-4 h-[320px]">
                 <div>
-                    <a href="#"><img src="" alt="logo" className="w-40" /></a>
+                    <img src="https://www.reshot.com/preview-assets/icons/WPDHRFL9Z5/job-rotation-WPDHRFL9Z5.svg" alt="" className="w-[10%]" />
                     <div className="max-w-lg mt-16 px-6 max-lg:hidden">
                         <h3 className="text-3xl font-bold text-white">Log in</h3>
                         <p className="text-sm mt-4 text-white">The login section provides users with the opportunity to sign in to their accounts,
@@ -127,6 +129,7 @@ const LogIn = () => {
                     </form>
                 </div>
             </div>
+            <motion.div style={{ scaleX: scrollYProgress }} />
         </div>
     );
 };

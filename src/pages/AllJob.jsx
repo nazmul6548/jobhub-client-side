@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { motion, useScroll } from "framer-motion"
 
 const AllJob = () => {
+    const { scrollYProgress } = useScroll();
     const [jobs,setJobs] =useState([])
     console.log(jobs);
     useEffect(()=>{
@@ -15,7 +16,12 @@ const AllJob = () => {
       getdata()
     },[])
     return (
+        
+        
         <div className="overflow-x-auto pb-8 mt-24">
+            <div>
+            <motion.div style={{ scaleX: scrollYProgress }} />  
+            </div>
         <table className="min-w-full bg-white font-[sans-serif]">
           <thead className="whitespace-nowrap">
             <tr>
