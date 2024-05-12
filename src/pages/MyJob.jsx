@@ -17,6 +17,20 @@ const MyJob = () => {
         getData()
     },[user])
     console.log(user);
+    const handleDelete =async (id) => {
+        try{
+            const {data} = await axios.delete(
+                `${import.meta.env.VITE_API_URL}/jobs/${id}`
+            )
+            console.log(data);
+            // toast
+
+        } catch (err) {
+            console.log(err.message);
+
+        }
+
+    };
     return (
         <div className="mt-24">
             <h1 className="text-center font-lato font-bold text-4xl p-4 pb-6 md:text-5xl">My All Jobs</h1>
@@ -75,7 +89,7 @@ job_title}
             </td>
             <td className="px-6 py-4 text-sm text-[#333]">
               <button className="text-blue-500 hover:text-blue-700 mr-4">Edit</button>
-              <button className="text-red-500 hover:text-red-700">Delete</button>
+              <button onClick={() => handleDelete(job._id)} className="text-red-500 hover:text-red-700">Delete</button>
             </td>
           </tr>
         ))
