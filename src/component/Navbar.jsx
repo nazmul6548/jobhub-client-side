@@ -52,7 +52,7 @@ const Navbar = () => {
           </li>
           
           <li className="hover:border-2 m-1">
-            <NavLink to="/g">My Jobs</NavLink>
+            <NavLink to="/mypostjob">My Jobs</NavLink>
           </li>
           <li className="hover:border-2 m-1">
             <NavLink to="/g"> Blogs</NavLink>
