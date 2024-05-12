@@ -13,7 +13,7 @@ const TabCategory = () => {
       setJobs(data)
     }
     getdata()
-  })
+  },[])
     return (
         <Tabs>
       <div className=' bg-gradient-to-r from-[#0b0e37] to-blue-700 text-white p-10'>

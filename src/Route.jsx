@@ -10,6 +10,7 @@ import MyJob from "./pages/MyJob";
 import UpdateJob from "./pages/UpdateJob";
 import Blog from "./pages/Blog";
 import PrivateRoute from "./component/PrivateRoute";
+import AllJob from "./pages/AllJob";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
           path:"/blog",
           element:<Blog></Blog>
 
+        },
+        {
+          path:"/alljob",
+          element:<AllJob></AllJob>
         }
   
       ]

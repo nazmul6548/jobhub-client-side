@@ -25,7 +25,7 @@ job_category}</h3>
                </ul>
                
                <Link to={`/job/${_id}`}>
-               <button type="button" className="px-6 py-2 mt-4 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600 w-full">View</button>
+               <button type="button" className="px-6 py-2 mt-4 rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-[#0b0e37] hover:bg-blue-700 active:bg-blue-600 w-full">View</button>
                </Link>
               </div>
             </div>

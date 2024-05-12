@@ -40,7 +40,7 @@ const Navbar = () => {
           
             
               <li className="hover:border-2 rounded-md m-1">
-              <NavLink to="/f">All Jobs</NavLink>
+              <NavLink to="/alljob">All Jobs</NavLink>
             </li>
             
           
