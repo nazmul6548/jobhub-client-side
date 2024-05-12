@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -8,14 +11,15 @@ const MyJob = () => {
     const {user} = useContext(AuthContext)
     const [jobs,setJobs] = useState([])
     useEffect(() => {
-        const getData = async () => {
-            const {data} = await axios (
-                `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
-            )
-            setJobs(data)
-        }
+        
         getData()
     },[user])
+    const getData = async () => {
+        const {data} = await axios (
+            `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
+        )
+        setJobs(data)
+    }
     console.log(user);
     const handleDelete =async (id) => {
         try{
@@ -24,9 +28,12 @@ const MyJob = () => {
             )
             console.log(data);
             // toast
-
+            toast("delete successfully")
+getData()
         } catch (err) {
             console.log(err.message);
+            toast("no deleted")
+            
 
         }
 
@@ -85,10 +92,11 @@ job_title}
               {job.application_deadline}
             </td>
             <td className="px-6 py-4 text-sm text-[#333]">
-              {job.salary_range}
+              ${job.salary_range}
             </td>
             <td className="px-6 py-4 text-sm text-[#333]">
-              <button className="text-blue-500 hover:text-blue-700 mr-4">Edit</button>
+              <Link to={`/updatejob/${job._id}`}>
+              <button className="text-blue-500 hover:text-blue-700 mr-4">Edit</button></Link>
               <button onClick={() => handleDelete(job._id)} className="text-red-500 hover:text-red-700">Delete</button>
             </td>
           </tr>
@@ -97,6 +105,7 @@ job_title}
     </tbody>
   </table>
 </div>
+<ToastContainer />
         </div>
     );
 };

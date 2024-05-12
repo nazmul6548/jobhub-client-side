@@ -6,10 +6,11 @@ import { AuthContext } from "../component/authprovider/AuthProvider";
 // import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
     const {user} =useContext(AuthContext)
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     console.log(user);
     const [startDate, setStartDate] = useState(new Date());
     const [startDates, setStartDates] = useState(new Date());
@@ -39,7 +40,7 @@ const AddJob = () => {
         try{
             const {data} =await axios.post(`${import.meta.env.VITE_API_URL}/job`,jobData)
             console.log(data);
-            // navigate('/mypostjob')
+            navigate('/mypostjob')
             if (data.acknowledged) {
                 swal({
                   title: "Good job!",

@@ -4,8 +4,7 @@ import { useLoaderData } from "react-router-dom";
 const JobDetails = () => {
     const data = useLoaderData()
     console.log(data);
-    const {_id,application_deadline,post_date,salary_range,job_title,user_name,number,
-        job_category,image,description}=data
+    const {salary_range,job_title,number,image,description}=data
     return (
         <div className="min-h-screen mt-20">
             <div>
