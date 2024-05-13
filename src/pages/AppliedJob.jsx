@@ -2,7 +2,8 @@ import { useContext, useEffect, useState,  } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../component/useAxiosSecure";
-
+// import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+// import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 
 const AppliedJob = () => {
     const axiosSecure = useAxiosSecure()
@@ -41,12 +42,12 @@ console.log(filter);
 
     if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
     return (
-       <div className="">
+       <div className="mt-20">
       <div className="relative flex flex-col items-center">
-    <h6 className="font-lato py-2 font-bold">Job Category:</h6>
+    <h6 className="font-lato py-2 font-bold font-2xl">Job Category:</h6>
       
           <select onChange={e => setFilter(e.target.value)} name="job_category"
-            value={filter} className="px-4 py-3.5 bg-[#dee1e4] text-black w-1/4 m-auto text-sm border-2 border-gray-100 focus:border-blue-500  outline-[#007bff]"
+            value={filter} className="px-4 py-3.5 bg-[#dee1e4] text-black w-full md:w-1/4 m-auto text-sm border-2 border-gray-100 focus:border-blue-500  outline-[#007bff]"
           >
             <option value="">Select an option</option>
             <option value="Part-Time">Part-Time</option>
@@ -75,7 +76,21 @@ comment}</p>
 <li>email:{b.email}</li>
 <li>deadline:{b.application_deadline}</li>
 <li>salary:{b.salary_range}</li>
-<li>resume{b.resume}</li>
+
+
+{/* <div>
+ <PDFViewer>
+     <li>Resume: {b.resume}</li>
+       </PDFViewer>
+          <PDFDownloadLink
+                document={<li>Resume: {b.resume}</li>}
+                     fileName="example.pdf"
+                       >
+                      {({ loading }) =>
+                             loading ? 'Loading document...' : 'Download now!'
+                        }
+                   </PDFDownloadLink>
+              </div> */}
    
   </div>
 </div>
