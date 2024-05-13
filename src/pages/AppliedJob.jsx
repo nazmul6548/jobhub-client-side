@@ -1,4 +1,4 @@
-import { useContext, useState,  } from "react";
+import { useContext, useEffect, useState,  } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../component/useAxiosSecure";
@@ -7,7 +7,8 @@ import useAxiosSecure from "../component/useAxiosSecure";
 const AppliedJob = () => {
     const axiosSecure = useAxiosSecure()
     const {user} = useContext(AuthContext)
- const [filter,setFilter] = useState([])
+ const [filter,setFilter] = useState('')
+ const [filteredBid, setFilteredBid] = useState([]);
  console.log(filter);
     const {
         data:bid=[],
@@ -20,7 +21,13 @@ const AppliedJob = () => {
     })
     console.log({bid});
     console.log(isLoading);
-
+    useEffect(() => {
+      // Filter the bid array based on the selected category
+      const filteredData = bid.filter((item) =>
+          filter ? item.category === filter : true
+      );
+      setFilteredBid(filteredData);
+  }, [bid, filter]);
 
     const getData = async () => {
         const {data} = await axiosSecure (
@@ -28,7 +35,10 @@ const AppliedJob = () => {
         )
         return(data)
     }
-    
+  
+console.log(filter);
+// console.log(filterdBid);
+
     if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
     return (
        <div className="">
@@ -55,7 +65,7 @@ const AppliedJob = () => {
 
          <div className="grid grid-cols-1 md:grid-cols-3">
             {
-                bid.map(b=> (
+                filteredBid.map(b=> (
                     <div key={b._id}
   className="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
   <div className="px-4 my-6">
