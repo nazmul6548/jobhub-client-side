@@ -1,30 +1,42 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState,  } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../component/useAxiosSecure";
 
 
 const AppliedJob = () => {
+    const axiosSecure = useAxiosSecure()
     const {user} = useContext(AuthContext)
-    const [bid,setBid] = useState([])
-    
+ const [filter,setFilter] = useState([])
+ console.log(filter);
+    const {
+        data:bid=[],
+        isLoading,
+        
+}=useQuery({
+        queryFn:()=>getData(),
+        queryKey:['bids'],
+        enabled:!!user
+    })
+    console.log({bid});
+    console.log(isLoading);
 
-    useEffect(() => {
-getData()
-    },[user])
+
     const getData = async () => {
-        const {data} = await axios (
-            `${import.meta.env.VITE_API_URL}/bids/${user?.email}`
+        const {data} = await axiosSecure (
+            `/bids/${user?.email}`
         )
-        setBid(data)
+        return(data)
     }
-    console.log(bid);
+    
+    if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
     return (
        <div className="">
       <div className="relative flex flex-col items-center">
     <h6 className="font-lato py-2 font-bold">Job Category:</h6>
       
-          <select name="job_category"
-            className="px-4 py-3.5 bg-[#dee1e4] text-black w-1/4 m-auto text-sm border-2 border-gray-100 focus:border-blue-500  outline-[#007bff]"
+          <select onChange={e => setFilter(e.target.value)} name="job_category"
+            value={filter} className="px-4 py-3.5 bg-[#dee1e4] text-black w-1/4 m-auto text-sm border-2 border-gray-100 focus:border-blue-500  outline-[#007bff]"
           >
             <option value="">Select an option</option>
             <option value="Part-Time">Part-Time</option>

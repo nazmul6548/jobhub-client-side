@@ -1,13 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
-import axios from "axios";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
-
+// import useAxiosSecure from "../component/useAxiosSecure";
+// import { useQuery,useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import useAxiosSecure from "../component/useAxiosSecure";
 
 
 const MyJob = () => {
+    const axiosSecure = useAxiosSecure()
     const {user} = useContext(AuthContext)
     const [jobs,setJobs] = useState([])
     useEffect(() => {
@@ -15,16 +19,16 @@ const MyJob = () => {
         getData()
     },[user])
     const getData = async () => {
-        const {data} = await axios (
-            `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
+        const {data} = await axiosSecure (
+            `/jobs/${user?.email}`
         )
         setJobs(data)
     }
     console.log(user);
     const handleDelete =async (id) => {
         try{
-            const {data} = await axios.delete(
-                `${import.meta.env.VITE_API_URL}/jobs/${id}`
+            const {data} = await axiosSecure.delete(
+                `/jobs/${id}`
             )
             console.log(data);
             // toast

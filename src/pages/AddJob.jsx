@@ -3,10 +3,10 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../component/authprovider/AuthProvider";
-// import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import useAxiosSecure from "../component/useAxiosSecure";
 
 const AddJob = () => {
     const {user} =useContext(AuthContext)
@@ -14,9 +14,10 @@ const AddJob = () => {
     console.log(user);
     const [startDate, setStartDate] = useState(new Date());
     const [startDates, setStartDates] = useState(new Date());
-   
+    const axiosSecure = useAxiosSecure()
 
     const handleSubmit =async (e) => {
+
         e.preventDefault();
         const form = e.target;
         // const jobId= _id;
@@ -38,7 +39,7 @@ const AddJob = () => {
         const jobData = {job_title,job_category,user_email,user_name,salary_range,number,image,description,post_date,application_deadline};
         console.log(jobData);
         try{
-            const {data} =await axios.post(`${import.meta.env.VITE_API_URL}/job`,jobData)
+            const {data} =await axiosSecure.post(`/job`,jobData)
             console.log(data);
             navigate('/mypostjob')
             if (data.acknowledged) {

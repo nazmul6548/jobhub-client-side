@@ -33,19 +33,20 @@ const AuthProvider = ({children}) => {
     const googlelogin = () => {
         setLoader(true)
          return signInWithPopup(auth, googleProvider)
-        .then((resul) => {
+         
+        // .then((resul) => {
             
-            const user=resul.user;
-            setUser(user)
+        //     const user=resul.user;
+        //     setUser(user)
             
-            setLoader(false)
-        })
-        .catch((error) => {
+        //     setLoader(false)
+        // })
+        // .catch((error) => {
             
-            toast.error('Failed to login with Google');
+        //     toast.error('Failed to login with Google');
     
-            setLoader(false)
-        });
+        //     setLoader(false)
+        // });
     }
     const logout = () => {
         setLoader(true)

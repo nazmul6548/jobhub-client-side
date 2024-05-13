@@ -1,14 +1,16 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext,  useState } from "react";
 import { AuthContext } from "../component/authprovider/AuthProvider";
-import axios from "axios";
+
 
 import "react-toastify/dist/ReactToastify.css";
 
 import swal from "sweetalert";
 import DatePicker from "react-datepicker";
+import useAxiosSecure from "../component/useAxiosSecure";
 
 const UpdateJob = () => {
+    const axiosSecure = useAxiosSecure()
   const navigate = useNavigate();
   const  data  = useLoaderData();
   console.log(data);
@@ -61,7 +63,7 @@ const UpdateJob = () => {
     console.log(jobData);
 
     try {
-      const { data } = await axios.put(
+      const { data } = await axiosSecure.put(
         `${import.meta.env.VITE_API_URL}/job/${_id}`,jobData
       );
       console.log(data);

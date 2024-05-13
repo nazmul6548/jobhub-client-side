@@ -1,20 +1,40 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll } from "framer-motion"
-
+import useAxiosSecure from "../component/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 const AllJob = () => {
+    const axiosSecure = useAxiosSecure()
     const { scrollYProgress } = useScroll();
-    const [jobs,setJobs] =useState([])
+    // const [jobs,setJobs] =useState([])
+    // console.log(jobs);
+    
+
+
+
+    const {
+        data:jobs=[],
+        isLoading,
+        
+}=useQuery({
+        queryFn:()=>getdata(),
+        queryKey:['bids'],
+    })
     console.log(jobs);
-    useEffect(()=>{
+    console.log(isLoading);
+
+
+
+
+
+
       const getdata = async () => {
-        const {data} = await axios (`${import.meta.env.VITE_API_URL}/jobs`)
+        const {data} = await axiosSecure (`/jobs`)
         console.log(data);
-        setJobs(data)
+        return(data)
       }
-      getdata()
-    },[])
+      if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
     return (
         
         

@@ -2,18 +2,29 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import TabJobCard from './TabJobCard';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import { useEffect, useState } from 'react';
+import { useQuery } from "@tanstack/react-query";
+
+import useAxiosSecure from './useAxiosSecure';
 
 const TabCategory = () => {
-  const [jobs,setJobs] =useState([])
-  useEffect(()=>{
+  const axiosSecure = useAxiosSecure()
+  // const [jobs,setJobs] =useState([])
+  const {
+    data:jobs=[],
+    isLoading,
+   
+}=useQuery({
+    queryFn:()=>getdata(),
+    queryKey:['bids'],
+})
+console.log(jobs);
+console.log(isLoading);
     const getdata = async () => {
-      const {data} = await axios (`${import.meta.env.VITE_API_URL}/jobs`)
-      setJobs(data)
+      const {data} = await axiosSecure(`/jobs`)
+      return(data)
     }
-    getdata()
-  },[])
+  
     return (
         <Tabs>
       <div className=' bg-gradient-to-r from-[#0b0e37] to-[#264e85] text-white p-10'>
