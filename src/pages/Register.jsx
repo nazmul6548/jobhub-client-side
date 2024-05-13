@@ -27,7 +27,7 @@ const Register = () => {
             userUpdateProfile(name,photo)
             // navigate(div)
             .then(()=>{
-                navigate(div)
+                navigate(div ,{replace:true})
                 
                 setReload(true)
                

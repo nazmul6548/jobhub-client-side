@@ -22,7 +22,7 @@ const LogIn = () => {
         login(email, password)
         .then(result => {
             if (result.user) {
-                navigate(div)
+                navigate(div ,{replace:true})
                 console.log(result.user);
             }
             const user =  result.user;

@@ -11,6 +11,7 @@ import UpdateJob from "./pages/UpdateJob";
 import Blog from "./pages/Blog";
 import PrivateRoute from "./component/PrivateRoute";
 import AllJob from "./pages/AllJob";
+import AppliedJob from "./pages/AppliedJob";
 
 
 const router = createBrowserRouter([
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
         {
           path:"/alljob",
           element:<AllJob></AllJob>
+        },
+        {
+          path:"/applied",
+          element:<AppliedJob></AppliedJob>,
+          
         }
   
       ]

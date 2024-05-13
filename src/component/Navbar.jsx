@@ -46,7 +46,7 @@ const Navbar = () => {
           
          {
           user &&  <li className="hover:border-2 rounded-md m-1">
-          <NavLink to="/f">Applied Jobs</NavLink>
+          <NavLink to="/applied">Applied Jobs</NavLink>
         </li>
          }
          {
@@ -63,9 +63,9 @@ const Navbar = () => {
           <li className="hover:border-2 m-1">
             <NavLink to="/blog"> Blogs</NavLink>
           </li>
-          <li className="hover:border-2 m-1">
+          {/* <li className="hover:border-2 m-1">
             <NavLink to="/g"> User Profile</NavLink>
-          </li>
+          </li> */}
           
             
            
@@ -115,7 +115,7 @@ const Navbar = () => {
             </ul>
           </div>
           
-          <div className='flex justify-center items-center'>
+          <div className='flex  items-center'>
             <img src="https://svgshare.com/i/15zq.svg" alt="" className='w-[15%]' />
           <Link to="/" className="btn btn-ghost text-[2px] font-lato font-bold  md:text-[30px]   ">JobHub</Link>
           </div>
