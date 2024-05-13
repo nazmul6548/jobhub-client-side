@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { motion, useScroll } from "framer-motion"
 import useAxiosSecure from "../component/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 const AllJob = () => {
     const axiosSecure = useAxiosSecure()
     const { scrollYProgress } = useScroll();
+    const [search, setSearch] = useState('')
+    const [filteredJobs, setFilteredJobs] = useState([]);
     // const [jobs,setJobs] =useState([])
     // console.log(jobs);
     
@@ -30,13 +33,21 @@ const AllJob = () => {
 
 
       const getdata = async () => {
-        const {data} = await axiosSecure (`/jobs`)
+        const {data} = await axiosSecure (`/jobs?search=${search}`)
         console.log(data);
         return(data)
       }
       if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
       const handleSearch =e=>{
-        e.preventDefault();
+        e.preventDefault()
+        setFilteredJobs(
+          jobs.filter((job) =>
+            job.job_title.toLowerCase().includes(search.toLowerCase())
+        )
+        )
+        const text=e.target.search.value;
+        setSearch(text)
+        console.log(text);
       }
     return (
         
@@ -47,8 +58,8 @@ const AllJob = () => {
               <input
                 className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                 type='text'
-                onChange={e => setSearchText(e.target.value)}
-                // value={searchText}
+                onChange={e => setSearch(e.target.value)}
+                value={search}
                 name='search'
                 placeholder='Enter Job Title'
                 aria-label='Enter Job Title'
@@ -86,6 +97,26 @@ const AllJob = () => {
           </thead>
           <tbody className="whitespace-nowrap divide-y divide-gray-200">
             {
+            filteredJobs.length > 0 ? (  filteredJobs.map((job) => (
+              <tr key={job._id} className="hover:bg-gray-50">
+              <td className="text-center px-6 py-3 text-sm">
+                {job.job_title}
+              </td>
+              <td className="text-center px-6 py-3 text-sm">
+              {new Date(job.post_date).toLocaleDateString()}
+              </td>
+              <td className="text-center px-6 py-3 text-xs">
+                <div className="mx-auto px-3 py-1 bg-red-500 w-max text-white rounded">{new Date(job.application_deadline).toLocaleDateString()}</div>
+              </td>
+              <td className="text-center px-6 py-3 text-xs">
+                <div className="mx-auto px-3 py-1 bg-green-500 w-max text-white rounded">${job.salary_range}</div>
+              </td>
+              <td className="text-center px-6 py-3 text-sm text-cyan-800 font-bold">
+               <Link to={`/job/${job._id}`}>view details</Link>
+               
+              </td>
+            </tr>
+                        ))) :
                 jobs.map(job => (
                     <tr key={job._id} className="hover:bg-gray-50">
               <td className="text-center px-6 py-3 text-sm">
