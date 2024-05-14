@@ -140,7 +140,7 @@ const Navbar = () => {
               <div className="w-10 rounded-xl">
                 
                 <a id="clickable"><img src={user?.photoURL || <p>user</p>} alt="" /></a>
-                <Tooltip className='' anchorSelect="#clickable" clickable>
+                <Tooltip className='md:mt-12' anchorSelect="#clickable" clickable>
                 <button> {user?.displayName || "not found"}</button>
                 <div className="mt-2 rounded-md">
                 <button onClick={logout} className="btn btn-sm bg-white">LogOut</button>

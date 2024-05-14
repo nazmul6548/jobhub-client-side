@@ -3,101 +3,60 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../component/authprovider/AuthProvider";
 import swal from "sweetalert";
 import { motion, useScroll } from "framer-motion"
-import axios from "axios";
-import { toast } from "react-toastify";
-import useAxiosSecure from "../component/useAxiosSecure";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+// import useAxiosSecure from "../component/useAxiosSecure";
 
 const LogIn = () => {
-    const axiosSecure = useAxiosSecure()
     const { scrollYProgress } = useScroll();
-    const {login,googlelogin,user} = useContext(AuthContext)
-    // console.log(user);
+    const {login,googlelogin} = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate()
     const location = useLocation()
     const div =location?.state || '/';
-    const handleLogin =async (e) => {
+    const handleLogin =(e) => {
         e.preventDefault();
         const form = e.target;
         
         const email = form.email.value;
         const password = form.password.value;
-       console.log({email,password});
-        try{
-            const result = await login(email, password)
-            console.log(result.user);
-            const {data} =await axiosSecure.post(`/jwt`,{
-                email:result?.user?.email,
-            },
-            {withCredentials:true}
-        )
-            console.log(data);
-            navigate(div ,{replace:true}).then(()=>{
-                swal({
-                    title: "LogIn successful",
-                    // text: "You clicked the button!",
-                    icon: "success",
-                    // button: "Aww yiss!",
-                    
-                    
-                  });
-            })
-           
-        }catch(err) {
-            console.log(err);
-                    }
-
-
-
-        
-        // login(email, password)
-        // .then(result => {
-        //     if (res.user) {
-        //         navigate(div ,{replace:true})
-        //         console.log(result.user);
-
-            
-               
-        //             }
-        //     const user =  result.user;
-        //     console.log(user);
-        // })
-        // .then(() => {
-        //     swal({
-        //       title: "LogIn successful",
-        //       // text: "You clicked the button!",
-        //       icon: "success",
-        //       // button: "Aww yiss!",
+        const res ={email, password};
+        console.log(res);
+        login(email, password)
+        .then(result => {
+            if (result.user) {
+                navigate(div ,{replace:true})
+                console.log(result.user);
+            }
+            const user =  result.user;
+            console.log(user);
+        })
+        .then(() => {
+            swal({
+              title: "LogIn successful",
+              // text: "You clicked the button!",
+              icon: "success",
+              // button: "Aww yiss!",
               
               
-        //     });
-        // })
-        // .catch(error => {
-        //     setErrorMessage(error.message);
-        //     console.log(error.message)
+            });
+        })
+        .catch(error => {
+            setErrorMessage(error.message);
+            console.log(error.message)
 
-        // });
+        });
 
     }
-    const googleButton =async ()=>{
-        try{
-            // const result = await googlelogin()
-            const result = await googlelogin()
-
-            const user = result.user;
-
-            console.log(user);
-             const {data} =await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
-                email:user?.email,
-            },
-            {withCredentials:true}
-        )
-            console.log(data);
-            toast.success("success")
-        }catch(err) {
-console.log(err);
-        }
-           
+    const googleButton = ()=>{
+      googlelogin()
+      .then(() => {
+        swal({
+            title: "LogIn successful",
+            icon: "success",
+        });
+    })
+    .catch(error => console.log(error));
     } 
     return (
         

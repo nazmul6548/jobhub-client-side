@@ -48,7 +48,7 @@ const AddJob = () => {
                   text: "You successfully added!",
                   icon: "success",
                   button: "Done!",
-                })
+                });
             }
         }catch (err) {
             console.log(err);
@@ -60,7 +60,7 @@ const AddJob = () => {
         <div className="min-h-screen mt-28 font-lato">
             <h1 className="text-center font-lato font-bold text-4xl md:text-5xl py-4">Add New Jobs</h1>
            <div>
-           <form onSubmit={handleSubmit} className="font-[sans-serif] max-w-4xl mx-auto">
+           <form onSubmit={handleSubmit} className="mb-4 font-[sans-serif] max-w-4xl mx-auto">
   <div className="grid sm:grid-cols-2 gap-6">
     <div className="relative flex flex-col items-start">
     <h6 className="font-lato py-2 font-bold">Job Title:</h6>
@@ -139,6 +139,10 @@ const AddJob = () => {
   <input type="submit" value="Submit"  className="mt-8 px-6 py-2.5 text-sm w-full font-semibold bg-[#0B0E37] text-white rounded hover:bg-[#006bff]"/>
 </form>
            </div>
+           
+        <div>
+        <img src="https://i.ibb.co/kG5Dp9s/Video-Files.jpg" alt="" />
+       </div>
         </div>
     );
 };
