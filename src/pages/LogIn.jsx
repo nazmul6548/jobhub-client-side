@@ -101,7 +101,7 @@ console.log(err);
     } 
     return (
         
-        <div className="font-sans text-[#333] min-h-screen ">
+        <div className="font-sans text-[#333] min-h-screen mt-20 ">
             <div className="grid lg:grid-cols-2 gap-4 bg-gradient-to-r from-[#0b0e37] to-blue-700 sm:p-8 p-4 h-[320px]">
                 <div>
                     <img src="https://www.reshot.com/preview-assets/icons/WPDHRFL9Z5/job-rotation-WPDHRFL9Z5.svg" alt="" className="w-[10%]" />

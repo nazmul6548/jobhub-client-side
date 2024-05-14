@@ -116,8 +116,8 @@ const Navbar = () => {
           </div>
           
           <div className='flex  items-center'>
-            <img src="https://svgshare.com/i/15zq.svg" alt="" className='w-[15%]' />
-          <Link to="/" className="btn btn-ghost text-[2px] font-lato font-bold  md:text-[30px]   ">JobHub</Link>
+            <img src="https://svgshare.com/i/15zq.svg" alt="" className='w-[40%] md:w-[15%]' />
+          <Link to="/" className="btn btn-ghost text-[2px] font-lato font-bold font text-lg  md:text-5xl   ">JobHub</Link>
           </div>
         </div>
         <div className="navbar-center  hidden lg:flex">

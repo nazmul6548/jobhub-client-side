@@ -11,11 +11,11 @@ const TabJobCard = ({job}) => {
            
               <div className="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg font-sans overflow-hidden mx-auto mt-4">
               <div className="px-4 my-6">
-                <h3 className="text-lg font-semibold text-black">Job Category : {
+                <h3 className="text-lg font-semibold font-lato text-black">Job Category : {
 job_category}</h3>
                
                <ul>
-                <p className="text-sm font-semibold text-black">Title :{job_title}</p>
+                <p className="text-sm  text-black">Title :{job_title}</p>
                 <p className="mt-2 text-sm text-gray-400">Name who posted the job :{user_name}</p>
                 <p className="mt-2 text-sm text-gray-400">Posting Date :{new Date(post_date).toLocaleDateString()}</p>
                 <p className="mt-2 text-sm text-gray-400">Deadline :{new Date(application_deadline).toLocaleDateString()}</p>

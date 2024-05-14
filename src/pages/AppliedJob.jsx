@@ -38,7 +38,7 @@ const AppliedJob = () => {
     }
   
 console.log(filter);
-// console.log(filterdBid);
+
 
     if (isLoading) return <p className="text-center flex justify-center">data is loading......</p>
     return (
@@ -49,13 +49,13 @@ console.log(filter);
           <select onChange={e => setFilter(e.target.value)} name="job_category"
             value={filter} className="px-4 py-3.5 bg-[#dee1e4] text-black w-full md:w-1/4 m-auto text-sm border-2 border-gray-100 focus:border-blue-500  outline-[#007bff]"
           >
-            <option value="">Select an option</option>
+            <option value="">Select an options</option>
             <option value="Part-Time">Part-Time</option>
             <option value="Hybrid">Hybrid</option>
             <option value="Remote Job">Remote Job</option>
             <option value="On-Site Job">On-Site Job</option>
            
-            {/* Add more options as needed */}
+           
 
           </select>
       

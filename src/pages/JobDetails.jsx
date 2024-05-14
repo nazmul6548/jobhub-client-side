@@ -15,7 +15,7 @@ const JobDetails = () => {
     const data = useLoaderData()
     console.log(data);
     const {_id,salary_range,job_title,number,image,description,job_category,
-        post_date}=data
+        post_date,application_deadline}=data
     
     const handlesubmission =async (e) => {
         e.preventDefault()
@@ -35,6 +35,23 @@ const JobDetails = () => {
             jobId,salary_range,application_deadline,resume,comment,email,name,category,title,deadline,postDate
         }
         console.log(bidres);
+        const currentDate = new Date();
+        console.log(currentDate);
+        if (deadline < currentDate) {
+            
+            return toast.error("Application deadline has passed. You cannot apply for this job.");
+            
+        }
+        if (deadline > currentDate) {
+            
+            return toast.error("Application deadline has passed. You cannot apply for this job.");
+            
+        }
+        if (user?.email === data.email) {
+          
+            toast.error("Employers cannot apply for their own job postings.");
+            return;
+        }
         try{
             const {data} = await axiosSecure.post(
                 `/bid`,bidres
@@ -46,6 +63,8 @@ const JobDetails = () => {
         console.log(err.message);
         toast.error('Error adding data!');
     }
+
+   
 }
 
     return (
@@ -57,18 +76,21 @@ const JobDetails = () => {
 		<div className="p-6 bg-[#0b0e37] text-white pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md">
 			<div className="space-y-2">
 				{/* <a rel="noopener noreferrer" href="#" className="inline-block text-2xl font-semibold sm:text-3xl"></a> */}
-				<p className="text-xs dark:text-gray-600">
+				<li className=" font-lato text-xl dark:text-gray-600">
                     Job Title :{job_title}
-				</p>
-				<p className="text-xs dark:text-gray-600">
-                   Description : {description} 
-				</p>
-				<p className="text-xs dark:text-gray-600">
+				</li>
+				
+				<li className=" dark:text-gray-600">
                   Salary Range : {salary_range} 
-				</p>
-				<p className="text-xs dark:text-gray-600">
+				</li>
+				<li className=" dark:text-gray-600">
                    Number of Applicants : {number} 
-				</p>
+				</li>
+				
+
+                <li className=" dark:text-gray-600">
+                   Description : {description} 
+				</li>
 			</div>
             {/*  */}
             {/*  */}
@@ -79,7 +101,18 @@ const JobDetails = () => {
     {/*  */}
     {/*  */}
     <form onSubmit={handlesubmission} className="font-sans m-6 max-w-4xl mx-auto">
+        <div>
+            <h1 className="font-bold font-lato text-4xl md:text-5xl py-3">You Can Apply This Job</h1>
+            <div className="font-lato text-bold mt-4 mb-5">
+                <h3>Job Title : {job_title}</h3>
+                <h3>Salary : {salary_range}</h3>
+                <h3>Deadline: {new Date(application_deadline).toLocaleDateString('en-US', { timeZone: 'UTC' })}</h3>
+
+            </div>
+        </div>
             <div className="grid sm:grid-cols-2 gap-10">
+
+
 
                 <div className="relative flex items-center">
                     <label className="text-sm bg-white text-black absolute px-2 top-[-10px] left-[18px] font-semibold">User Name</label>
