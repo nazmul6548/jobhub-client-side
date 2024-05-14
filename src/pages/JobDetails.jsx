@@ -42,11 +42,11 @@ const JobDetails = () => {
             return toast.error("Application deadline has passed. You cannot apply for this job.");
             
         }
-        if (deadline > currentDate) {
+        // if (deadline > currentDate) {
             
-            return toast.error("Application deadline has passed. You cannot apply for this job.");
+        //     return toast.error("Application deadline has passed. You cannot apply for this job.");
             
-        }
+        // }
         if (user?.email === data.email) {
           
             toast.error("Employers cannot apply for their own job postings.");
