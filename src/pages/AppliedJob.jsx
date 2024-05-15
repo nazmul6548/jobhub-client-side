@@ -18,8 +18,8 @@ const AppliedJob = () => {
     queryKey: ["bids"],
     enabled: !!user,
   });
-  console.log({ bid });
-  console.log(isLoading);
+  // console.log({ bid });
+  // console.log(isLoading);
   useEffect(() => {
     // Filter the bid array based on the selected category
     const filteredData = bid.filter((item) =>
@@ -33,14 +33,14 @@ const AppliedJob = () => {
     return data;
   };
 
-  console.log(filter);
+  // console.log(filter);
 
   if (isLoading)
     return (
       <p className="text-center flex justify-center">data is loading......</p>
     );
   return (
-    <div className="mt-20">
+    <div className="mt-24">
       <div className="relative flex flex-col items-center">
         <h6 className="font-lato py-2 font-bold font-2xl">Job Category:</h6>
 

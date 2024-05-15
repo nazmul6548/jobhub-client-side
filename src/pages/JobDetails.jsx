@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 
 import { toast } from "react-toastify";
 import useAxiosSecure from "../component/useAxiosSecure";
+// import axios from "axios";
+// import { QueryClient } from "@tanstack/react-query";
 
 
 const JobDetails = () => {
@@ -34,7 +36,7 @@ const JobDetails = () => {
         const bidres ={
             jobId,salary_range,application_deadline,resume,comment,email,name,category,title,deadline,postDate
         }
-        console.log(bidres);
+        // console.log(bidres);
         const currentDate = new Date();
         console.log(currentDate);
         if (deadline < currentDate) {
@@ -47,26 +49,32 @@ const JobDetails = () => {
         //     return toast.error("Application deadline has passed. You cannot apply for this job.");
             
         // }
-        if (user?.email === data.email) {
+        if (user?.email === data.user_email) {
           
             toast.error("Employers cannot apply for their own job postings.");
             return;
         }
+        
         try{
             const {data} = await axiosSecure.post(
                 `/bid`,bidres
+
             )
-            toast.success('Data added successfully!');
+           
+            toast.success('Data added successfully  kutta!');
             console.log(data);
         }catch (err) {
-        console.log(err);
+        // console.log(err);
         console.log(err.message);
         toast.error('Error adding data!');
     }
 
-   
-}
+ 
 
+
+
+
+    }
     return (
         <div className="min-h-screen mt-20">
             <div>
@@ -128,25 +136,25 @@ const JobDetails = () => {
                 </div>
                 <div className="relative flex items-center">
                     <label className="text-sm bg-white text-black absolute px-2 top-[-10px] left-[18px] font-semibold">your salary_range</label>
-                    <input type="text" name="salary" placeholder="Enter first name"
+                    <input type="text" required name="salary" placeholder="Enter first name"
                         className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none" />
                     {/* svg */}
                 </div>
                
                 <div className=" flex flex-col text-start">
                     <label className="text-sm bg-white text-black  px-2 top-[-10px] left-[18px] font-semibold">deadline</label>
-                    <DatePicker className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none" name="post_date"  selected={startDate} onChange={(date) => setStartDate(date)} />
+                    <DatePicker className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none" required name="post_date"  selected={startDate} onChange={(date) => setStartDate(date)} />
                     {/* svg */}
                 </div>
                 <div className="relative flex items-center">
                     <label className="text-sm bg-white text-black absolute px-2 top-[-10px] left-[18px] font-semibold">your comment</label>
-                    <input type="text" name="comment"  placeholder="type your opinion"
+                    <input type="text" name="comment" required placeholder="type your opinion"
                         className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none" />
                     {/* svg */}
                 </div>
                 <div className="relative flex items-center">
                     <label className="text-sm bg-white text-black absolute px-2 top-[-10px] left-[18px] font-semibold">Your resume link</label>
-                    <input type="text"   name="resume" placeholder="provide your resume link"
+                    <input type="text" required  name="resume" placeholder="provide your resume link"
                         className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none" />
                     {/* svg */}
                 </div>

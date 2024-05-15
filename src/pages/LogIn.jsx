@@ -20,16 +20,16 @@ const LogIn = () => {
         
         const email = form.email.value;
         const password = form.password.value;
-        const res ={email, password};
-        console.log(res);
+        // const res ={email, password};
+        // console.log(res);
         login(email, password)
         .then(result => {
             if (result.user) {
                 navigate(div ,{replace:true})
                 console.log(result.user);
             }
-            const user =  result.user;
-            console.log(user);
+            // const user =  result.user;
+            // console.log(user);
         })
         .then(() => {
             swal({

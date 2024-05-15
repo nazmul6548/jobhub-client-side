@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 // import useAxiosSecure from "../component/useAxiosSecure";
 // import { useQuery,useMutation } from "@tanstack/react-query";
-import axios from "axios";
+// import axios from "axios";
 import useAxiosSecure from "../component/useAxiosSecure";
 
 
@@ -24,7 +24,7 @@ const MyJob = () => {
         )
         setJobs(data)
     }
-    console.log(user);
+    // console.log(user);
     const handleDelete =async (id) => {
         try{
             const {data} = await axiosSecure.delete(

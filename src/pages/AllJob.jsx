@@ -1,7 +1,7 @@
 
 // import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll } from "framer-motion"
+import {  useScroll } from "framer-motion"
 import useAxiosSecure from "../component/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -24,8 +24,8 @@ const AllJob = () => {
         queryFn:()=>getdata(),
         queryKey:['bids'],
     })
-    console.log(jobs);
-    console.log(isLoading);
+    // console.log(jobs);
+    // console.log(isLoading);
 
 
 

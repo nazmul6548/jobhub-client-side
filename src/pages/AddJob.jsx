@@ -37,7 +37,7 @@ const AddJob = () => {
 
 
         const jobData = {job_title,job_category,user_email,user_name,salary_range,number,image,description,post_date,application_deadline};
-        console.log(jobData);
+        // console.log(jobData);
         try{
             const {data} =await axiosSecure.post(`/job`,jobData)
             console.log(data);
@@ -119,7 +119,7 @@ const AddJob = () => {
     </div>
     <div className="relative flex flex-col items-start">
     <h6 className="font-lato font-bold py-2">Job Number:</h6>
-      <input type="number" name="number" placeholder="Applied Job Number"
+      <input type="number" defaultValue={0} name="number" placeholder="Applied Job Number"
         className="px-4 py-3 bg-[#f0f1f2] text-black w-full text-sm border outline-[#007bff] rounded" />
       
     </div>

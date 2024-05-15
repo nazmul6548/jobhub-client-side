@@ -18,7 +18,7 @@ const TabCategory = () => {
     queryFn:()=>getdata(),
     queryKey:['bids'],
 })
-console.log(jobs);
+// console.log(jobs);
 console.log(isLoading);
     const getdata = async () => {
       const {data} = await axiosSecure(`/jobs`)

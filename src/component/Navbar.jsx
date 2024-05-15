@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import { AuthContext } from "./authprovider/AuthProvider";
-import logo from "../assets/11.svg"
+// import logo from "../assets/11.svg"
 
 const Navbar = () => {
     const {user,loader,logout,}= useContext(AuthContext)

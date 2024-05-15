@@ -60,11 +60,11 @@ const UpdateJob = () => {
       post_date,
       application_deadline,
     };
-    console.log(jobData);
+    // console.log(jobData);
 
     try {
       const { data } = await axiosSecure.put(
-        `${import.meta.env.VITE_API_URL}/job/${_id}`,jobData
+        `/job/${_id}`,jobData
       );
       console.log(data);
       navigate("/mypostjob");

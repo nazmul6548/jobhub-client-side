@@ -20,8 +20,8 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        const res = {name,email,password,photo}
-        console.log(res);
+        // const res = {name,email,password,photo}
+        // console.log(res);
         createUser(email,password)
         .then(() => {
             userUpdateProfile(name,photo)
@@ -36,7 +36,7 @@ const Register = () => {
               )
             // console.log(result.user);
 
-console.log(res);
+// console.log(res);
 
 swal({
     title: "Good job!",
