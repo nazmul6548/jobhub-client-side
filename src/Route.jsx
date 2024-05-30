@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import PrivateRoute from "./component/PrivateRoute";
 import AllJob from "./pages/AllJob";
 import AppliedJob from "./pages/AppliedJob";
+import Review from "./pages/Review";
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
           path:"/applied",
           element:<AppliedJob></AppliedJob>,
           
+        },
+        {
+          path:"/review",
+          element:<Review></Review>
         }
   
       ]

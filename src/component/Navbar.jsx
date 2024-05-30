@@ -42,6 +42,9 @@ const Navbar = () => {
               <li className="hover:border-2 rounded-md m-1">
               <NavLink to="/alljob">All Jobs</NavLink>
             </li>
+              <li className="hover:border-2 rounded-md m-1">
+              <NavLink to="/review">Review</NavLink>
+            </li>
             
           
          {
@@ -159,14 +162,7 @@ const Navbar = () => {
           
 
         )}
-        {/* {
-          !user && <Link to="/register">
-          <button className="btn btn-sm bg-white text-stone-800">Register</button>
-        </Link>
-        } */}
-        {/* {
-          user && <button onClick={logout} className="btn btn-sm bg-white">LogOut</button>
-        } */}
+       
         </div>
       </div>
     );
