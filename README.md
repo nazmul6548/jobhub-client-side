@@ -2,7 +2,9 @@ JobHub
 
 Website Live Link: [JobHub](https://jobquesthub-60260.web.app/)
 
-Meaning: JobHub is a comprehensive platform designed to streamline the job search process and facilitate efficient recruitment. Leveraging advanced technologies and user-friendly interfaces, JobHub offers a seamless experience for both job seekers and employers.
+overview:
+
+.JobHub is a comprehensive platform designed to connect job seekers with their ideal career opportunities. Users can effortlessly post job listings and search for vacancies across various industries. Join JobHub to streamline your job search or find the perfect candidate for your organization.
 
 Key Features:
 
@@ -19,3 +21,10 @@ Advanced Functionality:
 Google and Firebase Authentication: Seamless integration of Google and Firebase authentication ensures secure user registration and login processes, enhancing platform reliability and user trust.
 5.Filter and Search System: JobHub incorporates a robust filtering and search system, powered by various npm packages, enabling users to find relevant job listings quickly and conveniently.
 6.Additional Enhancements: Implementation of various npm packages, including name list toast, framer motion, etc., enhances user experience and adds visual appeal to the platform.
+
+*technologies:node.js mongodb. firebase.tanstack query.jwt.axios.
+
+*how locally run this side
+.git clone https://github.com/your-username/repository.git(for example)
+.cd repository
+.npm install
